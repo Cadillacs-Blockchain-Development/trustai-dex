@@ -1,21 +1,24 @@
+"use client";
 import React from "react";
 import logo from "@/public/logo.svg";
 import Image from "next/image";
 import { aleo, poppins } from "@/utils/fonts";
-
-const links = [
-  { name: "Swap", link: "" },
-  { name: "Liquidity", link: "" },
-];
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
+  const { t } = useTranslation();
+  const links = [
+    { translation: t("navbar.swap"), link: "" },
+    { translation: t("navbar.liquidity"), link: "" },
+  ];
+
   return (
-    <nav className={`${aleo.className} w-[calc(60%-56px)] ml-14 mt-4`}>
+    <nav className={`${aleo.className} ml-4 mt-4 lg:ml-14`}>
       <div className="flex items-center gap-2">
         <Image src={logo} alt="logo" />
         <div>
-          <span className="text-base text-white font-bold mr-1">Trust</span>
-          <span className="bg-clip-text text-transparent bg-text-linear-gradient font-bold text-base">
+          <span className="mr-1 text-base font-bold text-white">Trust</span>
+          <span className="bg-text-linear-gradient bg-clip-text text-base font-bold text-transparent">
             AI
           </span>
         </div>
@@ -23,11 +26,11 @@ const Navbar = () => {
           {links.map((link, i) => (
             <span
               className={`bg-clip-text text-transparent ${
-                i === 0 ? "bg-text-linear-gradient mr-12" : "text-white"
-              } font-bold text-sm`}
+                i === 0 ? "mr-12 bg-text-linear-gradient" : "text-white"
+              } text-sm font-bold`}
               key={link.link}
             >
-              {link.name}
+              {link.translation}
             </span>
           ))}
         </div>

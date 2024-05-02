@@ -1,0 +1,14 @@
+{
+    "chart_time": "Past 24 Hours",
+    "conversion": {
+        "connect_wallet_title": "Connect to a wallet",
+        "heading": "Swap",
+        "pay": "Pay",
+        "available_1": "Available:500",
+        "recieve": "Receive (Estimated)",
+        "available_2": "Available: 1,200",
+        "confirm_btn_desc": "Enter an amount to see more trading details",
+        "trade_minting": "Trade Minting",
+        "max_reward": "Max Reward"
+    }
+}
