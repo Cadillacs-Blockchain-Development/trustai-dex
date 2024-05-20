@@ -4,12 +4,18 @@ import Providers from "./providers";
 import Navbar from "@/components/Navbar";
 import TranslationsProvider from "@/lib/TranslationsProviders";
 import initTranslations from "../i18n";
+import i18nConfig from "@/i18nConfig";
+import { dir } from "i18next";
 
 export const metadata = {
   title: "Dex",
 };
 
+export function generateStaticParams() {
+  return i18nConfig.locales.map((locale) => ({ locale }));
+}
 const i18nNamespaces = ["common"];
+
 export default async function RootLayout({
   children,
   params: { locale },
@@ -19,7 +25,7 @@ export default async function RootLayout({
 }>) {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
   return (
-    <html lang="en">
+    <html lang={locale} dir={dir(locale)}>
       <body className="min-h-screen bg-background ">
         <Providers>
           <TranslationsProvider

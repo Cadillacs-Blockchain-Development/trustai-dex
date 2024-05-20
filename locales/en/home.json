@@ -1,7 +1,6 @@
 {
     "chart_time": "Past 24 Hours",
     "conversion": {
-        "connect_wallet_title": "Connect to a wallet",
         "heading": "Swap",
         "pay": "Pay",
         "available_1": "Available:500",

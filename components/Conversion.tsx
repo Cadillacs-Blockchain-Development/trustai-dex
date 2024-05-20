@@ -1,6 +1,5 @@
 "use client";
 import { aleo, poppins, rubik } from "@/utils/fonts";
-import { ConnectWallet } from "@thirdweb-dev/react";
 import Image from "next/image";
 import TrustCoin from "@/public/trustAICoin.svg";
 import Usdt from "@/public/Usdt.svg";
@@ -25,38 +24,8 @@ const Conversion = () => {
   const { t } = useTranslation();
   return (
     <div
-      className={`${poppins.className} relative h-[calc(100vh+56px)] flex-1 overflow-hidden rounded-xl bg-[#23242F] px-4 pt-3 lg:-top-12 lg:rounded-none lg:px-9`}
+      className={`${poppins.className} absolute right-0 top-0 min-h-dvh w-[34%] overflow-hidden rounded-xl bg-[#23242F] px-4 pt-3 lg:rounded-none lg:px-9`}
     >
-      <div className="flex  items-center justify-between">
-        <div className="flex items-center gap-3">
-          <Image src={TrustCoin} alt="Trust Coin" />
-          <span className={`${aleo.className} text-sm text-white `}>$0.91</span>
-        </div>
-        <div className="flex  items-center gap-1 rounded-full bg-[#2C2D3A] pl-4">
-          <div className="size-2 rounded-full bg-[#DAA200]"></div>
-          <span className="mr-1 text-xs text-white lg:mr-4 lg:text-sm">
-            TRT
-          </span>
-          <div>
-            <ConnectWallet
-              btnTitle={t("conversion.connect_wallet_title")}
-              style={{
-                borderRadius: "9999px",
-                color: "black",
-                fontWeight: "600",
-                height: "fit-content",
-                padding: "8px 16px",
-                background: "linear-gradient(90deg, #DAA200 0%, #FFD600 100%)",
-              }}
-              modalSize="compact"
-            />
-          </div>
-        </div>
-        <div className="hidden size-10 items-center justify-center rounded-xl bg-[#3B3C4E] lg:flex">
-          <div className="size-[18px] rounded-full bg-white"></div>
-        </div>
-      </div>
-
       <div className="mt-[76px] rounded-3xl bg-[#2C2D3A] p-6">
         <div className="flex flex-col gap-6">
           <div className="text-center text-[25px] font-bold text-white">

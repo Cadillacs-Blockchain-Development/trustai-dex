@@ -25,7 +25,7 @@ export default async function Home({
       resources={resources}
     >
       <main
-        className={`${poppins.className} mx-auto flex max-w-[1440px] flex-col gap-6 px-4 lg:flex-row lg:px-0 lg:pl-14 `}
+        className={`${poppins.className} container mx-auto flex flex-col gap-6 pl-4 lg:flex-row lg:px-0 lg:pl-14 `}
       >
         {/* left content */}
         <div className="mt-16 basis-[60%] ">

@@ -1,6 +1,7 @@
 {
     "navbar": {
         "swap": "Swap",
-        "liquidity": "Liquidity"
+        "liquidity": "Liquidity",
+        "connect_wallet_title": "Connect to a wallet"
     }
 }
