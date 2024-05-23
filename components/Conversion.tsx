@@ -12,8 +12,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
@@ -47,7 +45,7 @@ const Conversion = () => {
                     <Image src={arrowDown} alt="down arrow icon" />
                   </div>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="text-sm font-semibold">
+                <DropdownMenuContent className="mt-2 rounded-xl bg-[#2A2D3C] p-2 text-sm font-semibold text-white">
                   <DropdownMenuItem>TRUST</DropdownMenuItem>
                   <DropdownMenuItem>USDT</DropdownMenuItem>
                 </DropdownMenuContent>
@@ -81,7 +79,7 @@ const Conversion = () => {
                     <Image src={arrowDown} alt="down arrow icon" />
                   </div>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="text-sm font-semibold">
+                <DropdownMenuContent className="mt-2 rounded-xl bg-[#2A2D3C] p-2 text-sm font-semibold text-white">
                   <DropdownMenuItem>TRUST</DropdownMenuItem>
                   <DropdownMenuItem>USDT</DropdownMenuItem>
                 </DropdownMenuContent>

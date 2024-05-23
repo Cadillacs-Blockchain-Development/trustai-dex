@@ -7,9 +7,12 @@ import { useTranslation } from "react-i18next";
 import Link from "next/link";
 import TrustCoin from "@/public/trustAICoin.svg";
 import { ConnectWallet } from "@thirdweb-dev/react";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   const { t } = useTranslation();
+  const pathname = usePathname();
   const links = [
     { translation: t("navbar.swap"), link: "/" },
     { translation: t("navbar.liquidity"), link: "/liquidity" },
@@ -28,12 +31,15 @@ const Navbar = () => {
               AI
             </span>
           </div>
-          <div className={`${poppins.className} ml-24`}>
+          <div className={`${poppins.className} ml-24 flex gap-12`}>
             {links.map((link, i) => (
               <Link
-                className={`bg-clip-text text-transparent ${
-                  i === 0 ? "mr-12 bg-text-linear-gradient" : "text-white"
-                } text-sm font-bold`}
+                className={cn(
+                  "bg-clip-text text-sm font-bold text-transparent",
+                  pathname === link.link
+                    ? "mr-12 bg-text-linear-gradient"
+                    : "text-white",
+                )}
                 key={link.link}
                 href={link.link}
               >
