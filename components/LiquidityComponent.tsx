@@ -4,17 +4,19 @@ import { Button } from "@/components/ui/button";
 import CreateAPair from "@/components/liquidity/tabs/CreateAPair";
 import { AnimatePresence, motion } from "framer-motion";
 import DefaultTab from "./liquidity/tabs/default";
+import RemoveLiquidity from "./liquidity/tabs/RemoveLiquidity";
 
 const LiquidityComponent = () => {
   const tabs = [
     { name: "default", component: <DefaultTab /> },
     { name: "createAPair", component: <CreateAPair /> },
+    { name: "removeLiquidity", component: <CreateAPair /> },
   ];
   const [activeTab, setActiveTab] = useState(tabs[0]);
   const [secondToken, setSecondToken] = useState("");
 
   return (
-    <div className="mx-auto sm:w-[74%] ">
+    <div className="container mx-auto sm:w-[74%] ">
       <AnimatePresence mode="wait">
         <motion.div
           key={activeTab ? activeTab.name : "empty"}
@@ -27,6 +29,13 @@ const LiquidityComponent = () => {
             <DefaultTab setActiveTab={setActiveTab} tabs={tabs} />
           ) : activeTab.name === "createAPair" ? (
             <CreateAPair
+              setActiveTab={setActiveTab}
+              tabs={tabs}
+              secondToken={secondToken}
+              setSecondToken={setSecondToken}
+            />
+          ) : activeTab.name === "removeLiquidity" ? (
+            <RemoveLiquidity
               setActiveTab={setActiveTab}
               tabs={tabs}
               secondToken={secondToken}

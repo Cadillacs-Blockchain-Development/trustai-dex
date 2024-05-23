@@ -20,7 +20,9 @@ const DefaultTab = ({ setActiveTab, tabs }: any) => {
   return (
     <div>
       <div className="relative flex w-full flex-col items-center justify-between gap-4 sm:flex-row">
-        <div className="text-5xl font-light text-[#F4BC00]">Your Liquidity</div>
+        <div className="text-4xl font-light text-[#F4BC00] sm:text-5xl">
+          Your Liquidity
+        </div>
         <div className="flex gap-4">
           <Button
             onClick={() => setActiveTab(tabs[1])}
@@ -77,14 +79,14 @@ const DefaultTab = ({ setActiveTab, tabs }: any) => {
       </div> */}
       <div
         className={cn(
-          "mt-6 overflow-hidden rounded-[8px] border border-[#222531] px-8 py-4 transition-all",
+          "mt-6 overflow-hidden rounded-[8px] border border-[#222531] px-2 py-4 transition-all sm:px-8",
           open ? "h-[360px]" : "h-[70px]",
         )}
       >
         <div className="flex w-full justify-between">
           <div className="flex items-center">
             <div className="mr-2 size-8 rounded-full bg-[#44485F]"></div>
-            <div className="mr-8 size-8 rounded-full bg-[#44485F]"></div>
+            <div className="mr-2 size-8 rounded-full bg-[#44485F] sm:mr-8"></div>
             <div className="font-semibold text-white">TRT/MPL</div>
           </div>
           <div
@@ -99,20 +101,20 @@ const DefaultTab = ({ setActiveTab, tabs }: any) => {
             />
           </div>
         </div>
-        <div className="mt-10 flex flex-col gap-4">
-          <div className="flex w-full items-center justify-between text-sm text-[#ABAFC4]">
+        <div className="mt-10 flex flex-col gap-4 text-xs text-[#ABAFC4] sm:text-sm">
+          <div className="flex w-full items-center justify-between">
             <div>Your total pool tokens</div>
             <div>0.0000000004302</div>
           </div>
-          <div className="flex w-full items-center justify-between text-sm text-[#ABAFC4]">
+          <div className="flex w-full items-center justify-between">
             <div>Pooled TRT</div>
             <div>0.000000230791</div>
           </div>
-          <div className="flex w-full items-center justify-between text-sm text-[#ABAFC4]">
+          <div className="flex w-full items-center justify-between">
             <div>Pooled MPL</div>
             <div>0.000226482</div>
           </div>
-          <div className="flex w-full items-center justify-between text-sm text-[#ABAFC4]">
+          <div className="flex w-full items-center justify-between">
             <div>Your pool share</div>
             <div>0.01%</div>
           </div>
@@ -121,7 +123,10 @@ const DefaultTab = ({ setActiveTab, tabs }: any) => {
           View Accrued Fees and Analytics
         </div>
         <div className="mt-4 flex w-full gap-2">
-          <Button className="h-fit w-full bg-[#222531] p-4 text-[#F4BC00]">
+          <Button
+            onClick={() => setActiveTab(tabs[2])}
+            className="h-fit w-full bg-[#222531] p-4 text-[#F4BC00]"
+          >
             Remove
           </Button>
           <Button className="h-fit w-full bg-[#222531] p-4 text-[#F4BC00]">

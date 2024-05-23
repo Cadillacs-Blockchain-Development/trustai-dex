@@ -300,9 +300,9 @@ const CreateAPair = ({
 }: any) => {
   return (
     <div className="mx-auto -mt-10 sm:w-[54%]">
-      <div className="relative flex w-full flex-col items-center justify-between gap-4 sm:flex-row">
+      <div className="relative flex w-full flex-row items-center justify-between gap-4">
         <div
-          className="flex cursor-pointer items-center justify-center rounded-full p-2 transition hover:bg-[#2C2D3A]"
+          className="flex cursor-pointer items-center justify-center rounded-full transition hover:bg-[#2C2D3A] sm:p-2"
           onClick={() => setActiveTab(tabs[0])}
         >
           <ChevronLeft color="white" />
@@ -331,7 +331,7 @@ const CreateAPair = ({
         </div>
       )}
       <div className="relative mt-10 flex w-full justify-between rounded-[8px] border border-[#2A2D3C] p-4">
-        <div className="max-w-[60%]">
+        <div className="max-w-[46%] sm:max-w-[60%]">
           <div className="text-sm font-semibold text-white">Input</div>
           <input
             type="text"
@@ -344,10 +344,12 @@ const CreateAPair = ({
           <div className="text-sm font-semibold text-[#F4BC00]">Max</div>
           <div className="">
             <DropdownMenu>
-              <DropdownMenuTrigger className="rounded-[8px] border border-[#2A2D3C] p-4 focus:outline-none">
-                <div className="flex items-center gap-3 ">
-                  <Image src={TrustCoin} alt="TRT" />
-                  <span className="text-sm font-semibold text-white">TRT</span>
+              <DropdownMenuTrigger className="rounded-[8px] border border-[#2A2D3C] p-2 focus:outline-none sm:p-4">
+                <div className="flex items-center sm:gap-3 ">
+                  <Image src={TrustCoin} alt="TRT" className="mr-1 sm:mr-0" />
+                  <span className="text-xs font-semibold text-white sm:text-sm">
+                    TRT
+                  </span>
                   <Image src={arrowDown} alt="down arrow icon" />
                 </div>
               </DropdownMenuTrigger>
@@ -363,7 +365,7 @@ const CreateAPair = ({
         <Plus color="#F4BC00" />
       </div>
       <div className="relative flex w-full justify-between rounded-[8px] border border-[#2A2D3C] p-4">
-        <div className="max-w-[60%]">
+        <div className="max-w-[46%] sm:max-w-[60%] ">
           <div className="text-sm font-semibold text-white">Input</div>
           <input
             type="text"
@@ -384,9 +386,9 @@ const CreateAPair = ({
                     <div className="text-sm font-semibold text-[#F4BC00]">
                       Max
                     </div>
-                    <div className="flex items-center gap-4 rounded-[8px] border border-[#44485F] px-4 py-3">
-                      <div className="size-8 rounded-full bg-[#44485F]"></div>
-                      <span className="text-sm font-semibold text-white">
+                    <div className="flex items-center gap-2 rounded-[8px] border border-[#44485F] px-2 py-2 sm:gap-4 sm:px-4 sm:py-3">
+                      <div className="size-6 rounded-full bg-[#44485F]"></div>
+                      <span className="text-xs font-semibold text-white sm:text-sm">
                         {secondToken}
                       </span>
                     </div>
