@@ -3,7 +3,7 @@ import Image from "next/image";
 import TrustCoin from "@/public/trustAICoin.svg";
 import Usdt from "@/public/Usdt.svg";
 import ExhangeIcon from "@/public/icons/exchange-swap.svg";
-import Chart from "@/components/Chat";
+import Chart from "@/components/Chart";
 import { Suspense } from "react";
 import { ConnectWallet } from "@thirdweb-dev/react";
 import Conversion from "@/components/Conversion";
@@ -25,7 +25,7 @@ export default async function Home({
       resources={resources}
     >
       <main
-        className={`${poppins.className} container mx-auto flex flex-col gap-6 pl-4 lg:flex-row lg:px-0 lg:pl-14 `}
+        className={`${poppins.className} container mx-auto flex flex-col gap-6 pl-4  lg:flex-row lg:px-0 lg:pl-14 `}
       >
         {/* left content */}
         <div className="mt-16 basis-[60%] ">
@@ -66,7 +66,6 @@ export default async function Home({
             </Suspense>
           </div>
         </div>
-
         {/* right content */}
         <Conversion />
       </main>

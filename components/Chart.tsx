@@ -23,7 +23,7 @@ ChartJS.register(
   Title,
   Tooltip,
   Filler,
-  Legend
+  Legend,
 );
 export const options: any = {
   responsive: true,
@@ -33,7 +33,7 @@ export const options: any = {
 const getGradient = (
   canvas: HTMLCanvasElement,
   color1: string,
-  color2: string
+  color2: string,
 ): CanvasGradient => {
   const ctx = canvas?.getContext("2d");
   if (!ctx) {
@@ -65,13 +65,13 @@ const Chart = () => {
             0,
             0,
             0,
-            ctx.chart.height - 20
+            ctx.chart.height - 20,
           );
           gradient.addColorStop(0, "rgba(243, 237, 83, 0.6)");
           gradient.addColorStop(1, "rgba(240, 243, 83, 0)");
           return gradient;
         },
-        lineTension: 0.1,
+        lineTension: 0.4,
       },
     ],
   };

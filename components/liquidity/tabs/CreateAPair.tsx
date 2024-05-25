@@ -26,7 +26,8 @@ import { cn } from "@/lib/utils";
 import { poppins } from "@/utils/fonts";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import manageIcon from "@/public/icons/manage-icon.svg";
-import trnasactionSubmitted from "@/public/icons/transaction-succesfull.svg";
+
+import TransactionSuccessfull from "@/components/ui/modals/common/TransactionSuccessfull";
 
 const SelectAToken = ({ setSecondToken, trigger }: any) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -145,60 +146,7 @@ const SelectAToken = ({ setSecondToken, trigger }: any) => {
     </>
   );
 };
-const TransactionSuccesfull = ({ setSecondToken, trigger }: any) => {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const commonBases = [
-    { title: "TRT", name: "TRT", price: "2.906" },
-    { title: "WETH", name: "Ether", price: "212" },
-    { title: "USDC", name: "USDC", price: "1" },
-    { title: "ZRX", name: "Ox Protocol Token", price: "1326" },
-    { title: "DAI", name: "Dai Stanblecoin", price: "3" },
-    { title: "USDT", name: "USDT", price: "1" },
-    { title: "WBTC", name: "Wrapped BTC", price: "0.02831" },
-  ];
-  return (
-    <>
-      <Button
-        onPress={onOpen}
-        className="my-10 flex h-fit w-full items-center justify-center bg-[#F4BC00] p-4 font-semibold text-black disabled:bg-[#222531] disabled:text-[#4C516B]"
-      >
-        Confirm
-      </Button>
-      <Modal
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
-        backdrop="blur"
-        className={cn(
-          "min-h-[40%] rounded-2xl bg-[#17171A]",
-          poppins.className,
-        )}
-        classNames={{
-          closeButton:
-            "mt-8 mr-4 transition focus:outline-none hover:bg-[#2C2D3A]",
-        }}
-      >
-        <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalBody>
-                <div className="mt-14 flex w-full flex-col items-center justify-center text-white">
-                  <Image
-                    src={trnasactionSubmitted}
-                    alt="transaction submitted"
-                  />
-                  <div className="mt-10 font-light">Transaction Submitted</div>
-                  <div className="mt-2 text-sm font-semibold text-[#FEBF32] hover:underline ">
-                    View on TRTSCAN
-                  </div>
-                </div>
-              </ModalBody>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
-    </>
-  );
-};
+
 const YouWillRecieve = ({ setSecondToken, trigger }: any) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const commonBases = [
@@ -282,7 +230,7 @@ const YouWillRecieve = ({ setSecondToken, trigger }: any) => {
                 </div>
               </ModalBody>
               <ModalFooter>
-                <TransactionSuccesfull />
+                <TransactionSuccessfull />
               </ModalFooter>
             </>
           )}

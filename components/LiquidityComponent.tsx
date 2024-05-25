@@ -41,9 +41,7 @@ const LiquidityComponent = () => {
               secondToken={secondToken}
               setSecondToken={setSecondToken}
             />
-          ) : (
-            ""
-          )}
+          ) : null}
         </motion.div>
       </AnimatePresence>
     </div>
