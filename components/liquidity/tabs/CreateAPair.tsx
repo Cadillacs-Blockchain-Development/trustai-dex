@@ -26,7 +26,8 @@ import { cn } from "@/lib/utils";
 import { poppins } from "@/utils/fonts";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import manageIcon from "@/public/icons/manage-icon.svg";
-import trnasactionSubmitted from "@/public/icons/transaction-succesfull.svg";
+
+import TransactionSuccessfull from "@/components/ui/modals/common/TransactionSuccessfull";
 
 const SelectAToken = ({ setSecondToken, trigger }: any) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -145,60 +146,7 @@ const SelectAToken = ({ setSecondToken, trigger }: any) => {
     </>
   );
 };
-const TransactionSuccesfull = ({ setSecondToken, trigger }: any) => {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const commonBases = [
-    { title: "TRT", name: "TRT", price: "2.906" },
-    { title: "WETH", name: "Ether", price: "212" },
-    { title: "USDC", name: "USDC", price: "1" },
-    { title: "ZRX", name: "Ox Protocol Token", price: "1326" },
-    { title: "DAI", name: "Dai Stanblecoin", price: "3" },
-    { title: "USDT", name: "USDT", price: "1" },
-    { title: "WBTC", name: "Wrapped BTC", price: "0.02831" },
-  ];
-  return (
-    <>
-      <Button
-        onPress={onOpen}
-        className="my-10 flex h-fit w-full items-center justify-center bg-[#F4BC00] p-4 font-semibold text-black disabled:bg-[#222531] disabled:text-[#4C516B]"
-      >
-        Confirm
-      </Button>
-      <Modal
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
-        backdrop="blur"
-        className={cn(
-          "min-h-[40%] rounded-2xl bg-[#17171A]",
-          poppins.className,
-        )}
-        classNames={{
-          closeButton:
-            "mt-8 mr-4 transition focus:outline-none hover:bg-[#2C2D3A]",
-        }}
-      >
-        <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalBody>
-                <div className="mt-14 flex w-full flex-col items-center justify-center text-white">
-                  <Image
-                    src={trnasactionSubmitted}
-                    alt="transaction submitted"
-                  />
-                  <div className="mt-10 font-light">Transaction Submitted</div>
-                  <div className="mt-2 text-sm font-semibold text-[#FEBF32] hover:underline ">
-                    View on TRTSCAN
-                  </div>
-                </div>
-              </ModalBody>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
-    </>
-  );
-};
+
 const YouWillRecieve = ({ setSecondToken, trigger }: any) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const commonBases = [
@@ -282,7 +230,7 @@ const YouWillRecieve = ({ setSecondToken, trigger }: any) => {
                 </div>
               </ModalBody>
               <ModalFooter>
-                <TransactionSuccesfull />
+                <TransactionSuccessfull />
               </ModalFooter>
             </>
           )}
@@ -300,9 +248,9 @@ const CreateAPair = ({
 }: any) => {
   return (
     <div className="mx-auto -mt-10 sm:w-[54%]">
-      <div className="relative flex w-full flex-col items-center justify-between gap-4 sm:flex-row">
+      <div className="relative flex w-full flex-row items-center justify-between gap-4">
         <div
-          className="flex cursor-pointer items-center justify-center rounded-full p-2 transition hover:bg-[#2C2D3A]"
+          className="flex cursor-pointer items-center justify-center rounded-full transition hover:bg-[#2C2D3A] sm:p-2"
           onClick={() => setActiveTab(tabs[0])}
         >
           <ChevronLeft color="white" />
@@ -331,7 +279,7 @@ const CreateAPair = ({
         </div>
       )}
       <div className="relative mt-10 flex w-full justify-between rounded-[8px] border border-[#2A2D3C] p-4">
-        <div className="max-w-[60%]">
+        <div className="max-w-[46%] sm:max-w-[60%]">
           <div className="text-sm font-semibold text-white">Input</div>
           <input
             type="text"
@@ -344,10 +292,12 @@ const CreateAPair = ({
           <div className="text-sm font-semibold text-[#F4BC00]">Max</div>
           <div className="">
             <DropdownMenu>
-              <DropdownMenuTrigger className="rounded-[8px] border border-[#2A2D3C] p-4 focus:outline-none">
-                <div className="flex items-center gap-3 ">
-                  <Image src={TrustCoin} alt="TRT" />
-                  <span className="text-sm font-semibold text-white">TRT</span>
+              <DropdownMenuTrigger className="rounded-[8px] border border-[#2A2D3C] p-2 focus:outline-none sm:p-4">
+                <div className="flex items-center sm:gap-3 ">
+                  <Image src={TrustCoin} alt="TRT" className="mr-1 sm:mr-0" />
+                  <span className="text-xs font-semibold text-white sm:text-sm">
+                    TRT
+                  </span>
                   <Image src={arrowDown} alt="down arrow icon" />
                 </div>
               </DropdownMenuTrigger>
@@ -363,7 +313,7 @@ const CreateAPair = ({
         <Plus color="#F4BC00" />
       </div>
       <div className="relative flex w-full justify-between rounded-[8px] border border-[#2A2D3C] p-4">
-        <div className="max-w-[60%]">
+        <div className="max-w-[46%] sm:max-w-[60%] ">
           <div className="text-sm font-semibold text-white">Input</div>
           <input
             type="text"
@@ -384,9 +334,9 @@ const CreateAPair = ({
                     <div className="text-sm font-semibold text-[#F4BC00]">
                       Max
                     </div>
-                    <div className="flex items-center gap-4 rounded-[8px] border border-[#44485F] px-4 py-3">
-                      <div className="size-8 rounded-full bg-[#44485F]"></div>
-                      <span className="text-sm font-semibold text-white">
+                    <div className="flex items-center gap-2 rounded-[8px] border border-[#44485F] px-2 py-2 sm:gap-4 sm:px-4 sm:py-3">
+                      <div className="size-6 rounded-full bg-[#44485F]"></div>
+                      <span className="text-xs font-semibold text-white sm:text-sm">
                         {secondToken}
                       </span>
                     </div>

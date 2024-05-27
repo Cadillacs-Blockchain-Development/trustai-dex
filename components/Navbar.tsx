@@ -31,13 +31,13 @@ const Navbar = () => {
               AI
             </span>
           </div>
-          <div className={`${poppins.className} ml-24 flex gap-12`}>
+          <div className={`${poppins.className} ml-10 flex gap-12 sm:ml-24`}>
             {links.map((link, i) => (
               <Link
                 className={cn(
                   "bg-clip-text text-sm font-bold text-transparent",
                   pathname === link.link
-                    ? "mr-12 bg-text-linear-gradient"
+                    ? "bg-text-linear-gradient"
                     : "text-white",
                 )}
                 key={link.link}

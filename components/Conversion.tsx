@@ -17,26 +17,38 @@ import {
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { useTranslation } from "react-i18next";
+import { Settings } from "lucide-react";
+import TransacitonSettings from "./ui/modals/swap/TransacitonSettings";
+import SelectAToken from "./ui/modals/swap/SelectAToken";
+import ConfirmSwap from "./ui/modals/swap/ConfirmSwap";
 
 const Conversion = () => {
   const { t } = useTranslation();
   return (
     <div
-      className={`${poppins.className} absolute right-0 top-0 min-h-dvh w-[34%] overflow-hidden rounded-xl bg-[#23242F] px-4 pt-3 lg:rounded-none lg:px-9`}
+      className={`${poppins.className} right-0 top-0 min-h-dvh overflow-hidden rounded-xl bg-[#23242F] px-4 pt-3 lg:absolute lg:w-[34%] lg:rounded-none lg:px-9`}
     >
       <div className="mt-[76px] rounded-3xl bg-[#2C2D3A] p-6">
         <div className="flex flex-col gap-6">
           <div className="text-center text-[25px] font-bold text-white">
-            {t("conversion.heading")}
+            <div className="flex w-full items-center justify-between">
+              <div className="basis-[60%]"></div>
+              <div className="flex w-full items-center justify-between">
+                {t("conversion.heading")}
+                <div className="cursor-pointer">
+                  <TransacitonSettings />
+                </div>
+              </div>
+            </div>
           </div>
           <div>
             <div className="flex justify-between text-sm text-[#8B8CA7]">
               <span> {t("conversion.pay")}</span>
               <span className="underline"> {t("conversion.available_1")}</span>
             </div>
-            <div className="mt-2 flex justify-between rounded-2xl border border-[#3B3C4E] p-4">
-              <DropdownMenu>
-                <DropdownMenuTrigger className="focus:outline-none">
+            <div className="mt-2 flex cursor-pointer justify-between rounded-2xl border border-[#3B3C4E] p-4">
+              <SelectAToken
+                trigger={
                   <div className="flex items-center gap-3">
                     <Image src={Usdt} alt="Usdt" />
                     <span className="text-sm font-semibold text-white">
@@ -44,19 +56,19 @@ const Conversion = () => {
                     </span>
                     <Image src={arrowDown} alt="down arrow icon" />
                   </div>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="mt-2 rounded-xl bg-[#2A2D3C] p-2 text-sm font-semibold text-white">
-                  <DropdownMenuItem>TRUST</DropdownMenuItem>
-                  <DropdownMenuItem>USDT</DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+                }
+              />
               <span
                 className={cn(
                   "text-lg font-bold text-[#8B8CA7]",
                   rubik.className,
                 )}
               >
-                0
+                <input
+                  type="text"
+                  placeholder="0"
+                  className="w-full bg-transparent px-2 text-right text-lg font-bold text-white focus:outline-none lg:w-fit"
+                />
               </span>
             </div>
           </div>
@@ -68,9 +80,9 @@ const Conversion = () => {
               <span> {t("conversion.recieve")}</span>
               <span className=""> {t("conversion.available_2")}</span>
             </div>
-            <div className="mt-2 flex justify-between rounded-2xl border border-[#3B3C4E] p-4">
-              <DropdownMenu>
-                <DropdownMenuTrigger className="focus:outline-none">
+            <div className="mt-2 flex cursor-pointer justify-between rounded-2xl border border-[#3B3C4E] p-4">
+              <SelectAToken
+                trigger={
                   <div className="flex items-center gap-3">
                     <Image src={TrustCoin} alt="TrustCoin" />
                     <span className="text-sm font-semibold text-white">
@@ -78,19 +90,19 @@ const Conversion = () => {
                     </span>
                     <Image src={arrowDown} alt="down arrow icon" />
                   </div>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="mt-2 rounded-xl bg-[#2A2D3C] p-2 text-sm font-semibold text-white">
-                  <DropdownMenuItem>TRUST</DropdownMenuItem>
-                  <DropdownMenuItem>USDT</DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+                }
+              />
               <span
                 className={cn(
                   "text-lg font-bold text-[#8B8CA7]",
                   rubik.className,
                 )}
               >
-                0
+                <input
+                  type="text"
+                  placeholder="0"
+                  className="w-full bg-transparent px-2 text-right text-lg font-bold text-white focus:outline-none lg:w-fit"
+                />
               </span>
             </div>
           </div>
@@ -99,11 +111,7 @@ const Conversion = () => {
             <Image src={exchange} alt="exchange" />
           </div>
           <div>
-            <Button className="h-fit w-full rounded-2xl bg-[#3B3C4E] p-4 hover:bg-[#3b3c4ebc] ">
-              <span className=" text-center text-base font-bold text-white">
-                Confirm Order
-              </span>
-            </Button>
+            <ConfirmSwap />
             <div className="mt-2 flex items-center justify-center text-sm text-[#8B8CA7]">
               {t("conversion.confirm_btn_desc")}
             </div>
