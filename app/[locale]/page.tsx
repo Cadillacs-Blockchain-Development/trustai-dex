@@ -5,12 +5,11 @@ import Usdt from "@/public/Usdt.svg";
 import ExhangeIcon from "@/public/icons/exchange-swap.svg";
 import Chart from "@/components/Chart";
 import { Suspense } from "react";
-import { ConnectWallet } from "@thirdweb-dev/react";
 import Conversion from "@/components/Conversion";
 import initTranslations from "../i18n";
 import TranslationsProvider from "@/lib/TranslationsProviders";
 
-const i18nNamespaces = ["home", "common"];
+const i18nNamespaces = ["swap", "common"];
 
 export default async function Home({
   params: { locale },

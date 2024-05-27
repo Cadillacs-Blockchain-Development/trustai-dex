@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   Modal,
   ModalContent,
@@ -18,15 +18,8 @@ import { CircleHelp, Settings } from "lucide-react";
 
 const TransacitonSettings = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const commonBases = [
-    { title: "TRT", name: "TRT", price: "2.906" },
-    { title: "WETH", name: "Ether", price: "212" },
-    { title: "USDC", name: "USDC", price: "1" },
-    { title: "ZRX", name: "Ox Protocol Token", price: "1326" },
-    { title: "DAI", name: "Dai Stanblecoin", price: "3" },
-    { title: "USDT", name: "USDT", price: "1" },
-    { title: "WBTC", name: "Wrapped BTC", price: "0.02831" },
-  ];
+  const commonSlippage = ["0.10%", "0.50%", "1.0%", "Auto"];
+  const [activeSlippage, setActiveSlippage] = useState("0.50%");
   return (
     <>
       <Button
@@ -73,19 +66,38 @@ const TransacitonSettings = () => {
                     <CircleHelp size={16} />
                   </Tooltip>
                 </div>
-                <div className="mt-6 flex flex-wrap justify-center gap-4">
-                  <Chip className="h-fit w-[48px] cursor-pointer bg-[#222531] px-4 py-2 text-[#FEBF32]">
-                    0.1%
-                  </Chip>
-                  <Chip className="h-fit w-[48px] cursor-pointer bg-[#222531] px-4 py-2 text-[#FEBF32]">
-                    0.5%
-                  </Chip>
-                  <Chip className="h-fit w-[48px] cursor-pointer bg-[#222531] px-4 py-2 text-[#FEBF32]">
-                    1.0%
-                  </Chip>
-                  <Chip className="h-fit w-[48px] cursor-pointer bg-[#222531] px-4 py-2 text-[#FEBF32]">
-                    Auto
-                  </Chip>
+                <div className="mt-6 flex flex-wrap items-stretch justify-center gap-4">
+                  {commonSlippage.slice(0, 3).map((slippage) => (
+                    <Chip
+                      key={slippage}
+                      className={cn(
+                        "h-fit w-[48px] cursor-pointer select-none bg-[#222531] px-4 py-2 text-[#FEBF32] transition",
+                        activeSlippage === slippage &&
+                          "bg-[#FEBF32] text-black",
+                      )}
+                      onClick={() => setActiveSlippage(slippage)}
+                    >
+                      {slippage}
+                    </Chip>
+                  ))}
+                  <input
+                    type="text"
+                    placeholder="0.50%"
+                    className="h-fit max-w-[20%] rounded-[8px] border border-[#3B3C4E] bg-transparent px-4 py-2"
+                  />
+                  {commonSlippage.slice(3, 4).map((slippage) => (
+                    <Chip
+                      key={slippage}
+                      className={cn(
+                        "h-fit w-[48px] cursor-pointer select-none bg-[#222531] px-4 py-2 text-[#FEBF32] transition",
+                        activeSlippage === slippage &&
+                          "bg-[#FEBF32] text-black",
+                      )}
+                      onClick={() => setActiveSlippage(slippage)}
+                    >
+                      {slippage}
+                    </Chip>
+                  ))}
                 </div>
                 <div className="mt-10 flex items-center gap-2 text-white">
                   <span className="font-semibold leading-6">

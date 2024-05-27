@@ -1,7 +1,4 @@
 "use client";
-import { Button as ShadCNButton } from "@/components/ui/button";
-import infoIcon from "@/public/icons/info-icon.svg";
-import noLiauidityIcon from "@/public/icons/no-liquidity-icon.svg";
 import arrowDown from "@/public/icons/arrow-down.svg";
 import Image from "next/image";
 import React, { useState } from "react";

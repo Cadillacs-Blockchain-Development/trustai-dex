@@ -1,16 +1,6 @@
 "use client";
 import React from "react";
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button,
-  useDisclosure,
-  Chip,
-  Tooltip,
-} from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,227 +8,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import TrustCoin from "@/public/trustAICoin.svg";
-import Usdt from "@/public/Usdt.svg";
 import arrowDown from "@/public/icons/arrow-down.svg";
-import { ChevronLeft, CircleHelp, Plus, Settings } from "lucide-react";
+import { ChevronLeft, Plus, Settings } from "lucide-react";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
-import { poppins } from "@/utils/fonts";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import manageIcon from "@/public/icons/manage-icon.svg";
-
-import TransactionSuccessfull from "@/components/ui/modals/common/TransactionSuccessfull";
-
-const SelectAToken = ({ setSecondToken, trigger }: any) => {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const commonBases = [
-    { title: "TRT", name: "TRT", price: "2.906" },
-    { title: "WETH", name: "Ether", price: "212" },
-    { title: "USDC", name: "USDC", price: "1" },
-    { title: "ZRX", name: "Ox Protocol Token", price: "1326" },
-    { title: "DAI", name: "Dai Stanblecoin", price: "3" },
-    { title: "USDT", name: "USDT", price: "1" },
-    { title: "WBTC", name: "Wrapped BTC", price: "0.02831" },
-  ];
-  return (
-    <>
-      {trigger ? (
-        <div onClick={onOpen}>{trigger}</div>
-      ) : (
-        <Button
-          onPress={onOpen}
-          className="bg-[#F4BC00] font-semibold text-black"
-        >
-          Select a token
-        </Button>
-      )}
-      <Modal
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
-        backdrop="blur"
-        className={cn(
-          "min-h-[90%] min-w-[36%] rounded-2xl bg-[#17171A]",
-          poppins.className,
-        )}
-        classNames={{
-          closeButton:
-            "mt-8 mr-4 transition focus:outline-none hover:bg-[#2C2D3A]",
-        }}
-      >
-        <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalHeader className="mt-4 flex flex-col gap-1 text-center text-2xl font-light text-[#F4BC00]">
-                Select a Token
-              </ModalHeader>
-              <ModalBody>
-                <input
-                  type="text"
-                  className="w-full rounded-[8px] border border-[#2A2D3C] bg-transparent px-4 py-5 text-sm font-semibold text-[#F4BC00] placeholder-[#888DAA]"
-                  placeholder="Search name or paste address"
-                />
-                <div className="my-2 flex items-center gap-2 text-white">
-                  <span className="font-semibold leading-6">Common Bases</span>
-                  <Tooltip
-                    showArrow={true}
-                    content="These tokens are commonly paired with other tokens"
-                    closeDelay={1000}
-                    className="max-w-[60%] rounded-[8px] bg-[#2A2D3C] text-white"
-                    classNames={{
-                      arrow: "rounded-none bg-[#2A2D3C]",
-                    }}
-                    placement="right"
-                  >
-                    <CircleHelp size={16} />
-                  </Tooltip>
-                </div>
-                <div className="flex flex-wrap gap-4">
-                  {commonBases.map((base, index) => (
-                    <Chip
-                      key={`common-base-chip${base.title}${index}`}
-                      className="bg-[#222531] px-4  text-sm text-white"
-                      onClick={() => {
-                        setSecondToken(base.title);
-                        onClose();
-                      }}
-                      startContent={
-                        <div className="mr-2 size-5 rounded-full bg-[#44485F]"></div>
-                      }
-                    >
-                      {base.title}
-                    </Chip>
-                  ))}
-                </div>
-                <ScrollArea className="scroll mt-6 flex h-72 flex-col gap-2 pr-4 text-white">
-                  {commonBases.map((base, index) => (
-                    <div
-                      key={`common-base-list${base.title}${index}`}
-                      className="flex w-full justify-between p-2 "
-                    >
-                      <div className="flex items-center gap-4">
-                        <div className="size-8 rounded-full bg-[#44485F]"></div>
-                        <div className="flex flex-col gap-2">
-                          <div className="font-semibold leading-6">
-                            {base.title}
-                          </div>
-                          <div className="text-sm text-[#ABAFC4]">
-                            {base.name}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="text-sm text-[#ABAFC4]">{base.price}</div>
-                    </div>
-                  ))}
-                </ScrollArea>
-              </ModalBody>
-              <ModalFooter>
-                <div className="flex w-full items-center justify-center">
-                  <div className="flex w-fit cursor-pointer gap-1 rounded-xl p-3 transition hover:bg-[#2C2D3A]">
-                    <Image src={manageIcon} alt="manage icon" />
-                    <span className="font-semibold text-[#F4BC00]">Manage</span>
-                  </div>
-                </div>
-              </ModalFooter>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
-    </>
-  );
-};
-
-const YouWillRecieve = ({ setSecondToken, trigger }: any) => {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const commonBases = [
-    { title: "TRT", name: "TRT", price: "2.906" },
-    { title: "WETH", name: "Ether", price: "212" },
-    { title: "USDC", name: "USDC", price: "1" },
-    { title: "ZRX", name: "Ox Protocol Token", price: "1326" },
-    { title: "DAI", name: "Dai Stanblecoin", price: "3" },
-    { title: "USDT", name: "USDT", price: "1" },
-    { title: "WBTC", name: "Wrapped BTC", price: "0.02831" },
-  ];
-  return (
-    <>
-      <Button
-        onPress={onOpen}
-        className="my-10 flex w-full items-center justify-center bg-[#F4BC00] p-4 font-semibold text-black disabled:bg-[#222531] disabled:text-[#4C516B]"
-      >
-        Supply
-      </Button>
-      <Modal
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
-        backdrop="blur"
-        className={cn(
-          "min-h-[90%] min-w-[36%] rounded-2xl bg-[#17171A]",
-          poppins.className,
-        )}
-        classNames={{
-          closeButton:
-            "mt-8 mr-4 transition focus:outline-none hover:bg-[#2C2D3A]",
-        }}
-      >
-        <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalHeader className="mt-4 flex flex-col gap-1 text-center text-2xl font-light text-[#F4BC00]">
-                You will Recieve
-              </ModalHeader>
-              <ModalBody>
-                <div className="mt-14 flex w-full justify-between font-semibold text-white">
-                  <div>0.001588</div>
-                  <div className="flex items-center gap-2">
-                    <div>TRT</div>
-                    <div className="size-8 rounded-full bg-[#44485F]"></div>
-                  </div>
-                </div>
-                <div className="mt-8 flex w-full justify-between font-semibold text-white">
-                  <div>1.23425</div>
-                  <div className="flex items-center gap-2">
-                    <div>MPL</div>
-                    <div className="size-8 rounded-full bg-[#44485F]"></div>
-                  </div>
-                </div>
-                <div className="mt-8 flex w-full max-w-[90%] text-sm text-[#888DAA]">
-                  Output is estimated. If the price changes by more than 0.5%
-                  your transaction will revert.
-                </div>
-                <div className="mt-6 flex w-full justify-between  text-lg font-semibold text-white">
-                  TRT/AMPL
-                </div>
-                <div className="mt-6 w-full rounded-[8px] border border-[#44485F] p-4  text-sm text-[#ABAFC4]">
-                  <div className="flex w-full items-center justify-between">
-                    <div>UNI ETH/AMPL Burned</div>
-                    <div className="flex items-center gap-2">
-                      0.000000033725
-                      <div className="size-8 rounded-full bg-[#44485F]"></div>
-                      <div className="size-8 rounded-full bg-[#44485F]"></div>
-                    </div>
-                  </div>
-                  <div className="mt-4 flex w-full items-center justify-between">
-                    <div>Price</div>
-                    <div className="flex flex-col items-end justify-start gap-2">
-                      <span>1 TRT = 976.176 MPL</span>
-                      <span>1 MPL = 0.00102441 TRT</span>
-                    </div>
-                  </div>
-                  <div className="mt-4 flex w-full items-center justify-between">
-                    <div>Share of Pool</div>
-                    <div className="flex items-center gap-2">0.000001546%</div>
-                  </div>
-                </div>
-              </ModalBody>
-              <ModalFooter>
-                <TransactionSuccessfull />
-              </ModalFooter>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
-    </>
-  );
-};
+import SelectAToken from "@/components/ui/modals/liquidity/SelectAToken";
+import YouWillRecieve from "@/components/ui/modals/liquidity/YouWillRecieve";
 
 const CreateAPair = ({
   setActiveTab,
@@ -325,10 +99,14 @@ const CreateAPair = ({
         <div className="flex items-center gap-4">
           <div className="">
             {secondToken === "" ? (
-              <SelectAToken setSecondToken={setSecondToken} />
+              <SelectAToken
+                setSecondToken={setSecondToken}
+                secondToken={secondToken}
+              />
             ) : (
               <SelectAToken
                 setSecondToken={setSecondToken}
+                secondToken={secondToken}
                 trigger={
                   <div className="flex cursor-pointer items-center gap-4">
                     <div className="text-sm font-semibold text-[#F4BC00]">
