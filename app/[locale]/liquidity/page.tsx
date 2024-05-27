@@ -3,7 +3,7 @@ import initTranslations from "@/app/i18n";
 import { poppins } from "@/utils/fonts";
 import LiquidityComponent from "@/components/LiquidityComponent";
 
-const i18nNamespaces = ["home", "common"];
+const i18nNamespaces = ["swap", "common"];
 
 const Liquidity = async ({
   params: { locale },

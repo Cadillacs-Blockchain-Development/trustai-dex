@@ -35,12 +35,7 @@ const LiquidityComponent = () => {
               setSecondToken={setSecondToken}
             />
           ) : activeTab.name === "removeLiquidity" ? (
-            <RemoveLiquidity
-              setActiveTab={setActiveTab}
-              tabs={tabs}
-              secondToken={secondToken}
-              setSecondToken={setSecondToken}
-            />
+            <RemoveLiquidity setActiveTab={setActiveTab} tabs={tabs} />
           ) : null}
         </motion.div>
       </AnimatePresence>

@@ -1,13 +1,12 @@
+"use client";
+import { cn } from "@/lib/utils";
 import { Button, Chip } from "@nextui-org/react";
 import { ChevronLeft, Settings } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 
-const RemoveLiquidity = ({
-  setActiveTab,
-  tabs,
-  secondToken,
-  setSecondToken,
-}: any) => {
+const RemoveLiquidity = ({ setActiveTab, tabs }: any) => {
+  const amount = ["25%", "50%", "75%", "Max"];
+  const [activeAmount, setActiveAmount] = useState("50%");
   return (
     <div className="mx-auto -mt-10 sm:w-[54%]">
       <div className="relative flex w-full flex-row items-center justify-between gap-4">
@@ -38,18 +37,18 @@ const RemoveLiquidity = ({
         62%
       </div>
       <div className="mt-10 flex flex-wrap justify-center gap-4">
-        <Chip className="h-fit w-[48px] cursor-pointer bg-[#222531] px-4 py-2 text-[#FEBF32]">
-          25%
-        </Chip>
-        <Chip className="h-fit w-[48px] cursor-pointer bg-[#222531] px-4 py-2 text-[#FEBF32]">
-          50%
-        </Chip>
-        <Chip className="h-fit w-[48px] cursor-pointer bg-[#222531] px-4 py-2 text-[#FEBF32]">
-          75%
-        </Chip>
-        <Chip className="h-fit w-[48px] cursor-pointer bg-[#222531] px-4 py-2 text-[#FEBF32]">
-          Max
-        </Chip>
+        {amount.map((amount) => (
+          <Chip
+            key={`remove-liquidity-${amount}`}
+            className={cn(
+              "h-fit w-[48px] cursor-pointer select-none bg-[#222531] px-4 py-2 text-[#FEBF32] transition",
+              activeAmount === amount && "bg-[#FEBF32] text-black",
+            )}
+            onClick={() => setActiveAmount(amount)}
+          >
+            {amount}
+          </Chip>
+        ))}
       </div>
       <div className="mt-6 w-full rounded-[8px] border border-[#44485F] p-4 text-sm text-[#ABAFC4]">
         <div className="flex w-full items-center justify-between">
